@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db_laravel
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
