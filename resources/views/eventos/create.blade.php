@@ -30,7 +30,6 @@
             <form method="POST" action="{{ route('eventos.store') }}">
                 @csrf
 
-                <!-- Nome do Evento -->
                 <div class="mb-4">
                     <label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
                     <input type="text" name="nome" id="nome" required
@@ -39,21 +38,18 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Data de Inscrição -->
                     <div class="mb-4">
                         <label for="data_inscricao" class="block text-sm font-medium text-gray-700">Data de Inscrição</label>
                         <input type="datetime-local" name="data_inscricao" id="data_inscricao" required
                             value="{{ old('data_inscricao') }}"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                     </div>
-                    <!-- Data de Início -->
                     <div class="mb-4">
                         <label for="data_inicio" class="block text-sm font-medium text-gray-700">Data de Início</label>
                         <input type="datetime-local" name="data_inicio" id="data_inicio" required
                             value="{{ old('data_inicio') }}"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                     </div>
-                    <!-- Data de Fim -->
                     <div class="mb-4">
                         <label for="data_fim" class="block text-sm font-medium text-gray-700">Data de Fim</label>
                         <input type="datetime-local" name="data_fim" id="data_fim" required
@@ -62,7 +58,6 @@
                     </div>
                 </div>
 
-                <!-- Local -->
                 <div class="mb-4">
                     <label for="local" class="block text-sm font-medium text-gray-700">Local</label>
                     <input type="text" name="local" id="local" required
@@ -70,7 +65,6 @@
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                 </div>
 
-                <!-- Descrição -->
                 <div class="mb-4">
                     <label for="descricao" class="block text-sm font-medium text-gray-700">Descrição</label>
                     <textarea name="descricao" id="descricao" rows="3"

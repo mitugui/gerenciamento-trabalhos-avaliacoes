@@ -38,4 +38,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.destroy');
 });
 
+Route::middleware(['auth', 'role:aluno,professor'])->group(function () {
+    Route::get('/eventos', [EventoController::class, 'publicIndex'])->name('eventos.public');
+});
+
 require __DIR__.'/auth.php';

@@ -10,8 +10,16 @@ class EventoController extends Controller
 {
     public function index()
     {
-        $eventos = Evento::all();
+        $eventos = Evento::all()
+                ->sortBy('data_inicio');
         return view('eventos.index', compact('eventos'));
+    }
+
+    public function publicIndex()
+    {
+        $eventos = Evento::all()
+            ->sortBy('data_inicio');
+        return view('eventos.public', compact('eventos'));
     }
 
     public function create()

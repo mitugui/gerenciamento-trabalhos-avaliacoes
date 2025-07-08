@@ -45,6 +45,16 @@ class User extends Authenticatable
         return $this->hasMany(Evento::class);
     }
 
+    public function isAluno(): bool
+    {
+        return strtolower($this->role->nome) === strtolower('aluno');
+    }
+
+    public function isProfessor(): bool
+    {
+        return strtolower($this->role->nome) === strtolower('professor');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
