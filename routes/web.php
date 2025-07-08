@@ -27,13 +27,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-    Route::get('/eventos', [EventoController::class, 'index'])->name('eventos.index');
-    Route::get('/eventos/create', [EventoController::class, 'create'])->name('eventos.create');
-    Route::post('/eventos', [EventoController::class, 'store'])->name('eventos.store');
-    Route::get('/eventos/{evento}/edit', [EventoController::class, 'edit'])->name('eventos.edit');
-    Route::put('/eventos/{evento}', [EventoController::class, 'update'])->name('eventos.update');
-    Route::delete('/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.destroy');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/eventos', [EventoController::class, 'index'])->name('eventos.index');
+    Route::get('/admin/eventos/create', [EventoController::class, 'create'])->name('eventos.create');
+    Route::post('/admin/eventos', [EventoController::class, 'store'])->name('eventos.store');
+    Route::get('/admin/eventos/{evento}/edit', [EventoController::class, 'edit'])->name('eventos.edit');
+    Route::put('/admin/eventos/{evento}', [EventoController::class, 'update'])->name('eventos.update');
+    Route::delete('/admin/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.destroy');
 });
 
 require __DIR__.'/auth.php';
