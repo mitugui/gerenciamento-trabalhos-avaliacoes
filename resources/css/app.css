@@ -7,3 +7,5 @@
 body {
     @apply font-rubik;
 }
+
+[x-cloak] { display: none !important; }
