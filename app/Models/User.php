@@ -55,6 +55,11 @@ class User extends Authenticatable
         return strtolower($this->role->nome) === strtolower('professor');
     }
 
+    public function isAdmin(): bool
+    {
+        return strtolower($this->role->nome) === strtolower('admin');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

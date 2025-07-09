@@ -34,6 +34,14 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        if ($request->user()->aluno) {
+            $request->user()->aluno->fill($request->only(['matricula']))->save();
+        }
+
+        if ($request->user()->professor) {
+            $request->user()->professor->fill($request->only(['siape']))->save();
+        }
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 

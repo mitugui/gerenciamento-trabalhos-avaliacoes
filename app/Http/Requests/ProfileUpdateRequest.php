@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Aluno;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -18,6 +19,8 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'matricula' => ['nullable', 'string', Rule::unique('alunos', 'matricula')->ignore($this->user()->id, 'user_id')],
+            'siape' => ['nullable', 'string', Rule::unique('professores', 'siape')->ignore($this->user()->id, 'user_id')]
         ];
     }
 }
