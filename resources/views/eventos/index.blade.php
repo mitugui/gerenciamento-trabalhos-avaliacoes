@@ -52,13 +52,11 @@
                                         <td class="px-4 py-2 flex justify-end gap-2">
                                             <a href="{{ route('eventos.edit', $evento->id) }}" class="text-yellow-600 hover:underline text-sm">Editar</a>
 
-                                            <!-- Excluir com Modal -->
                                             <div x-data="{ open: false }" class="relative">
                                                 <button @click="open = true" class="text-red-600 hover:underline text-sm">
                                                     Excluir
                                                 </button>
 
-                                                <!-- Modal -->
                                                 <div
                                                     x-show="open"
                                                     x-cloak
@@ -93,7 +91,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Fim Modal -->
+                                            <a href="{{ route('eventos.pdf', $evento->id) }}">PDF</a>
                                         </td>
                                     </tr>
                                 @endforeach

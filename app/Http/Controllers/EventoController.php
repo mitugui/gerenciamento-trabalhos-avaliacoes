@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Evento;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EventoController extends Controller
 {
@@ -20,6 +21,12 @@ class EventoController extends Controller
         $eventos = Evento::all()
             ->sortBy('data_inicio');
         return view('eventos.public', compact('eventos'));
+    }
+
+    public function show(string $id)
+    {
+        $evento = Evento::findOrFail($id);
+        return view('eventos.show', compact('evento'));
     }
 
     public function create()
@@ -157,5 +164,12 @@ class EventoController extends Controller
         $evento->delete();
 
         return redirect()->route('eventos.index')->with('success', 'Evento excluído com sucesso!');
+    }
+
+    public function generatePdf(string $id)
+    {
+        $evento = Evento::findOrFail($id);
+        $pdf = Pdf::loadView('eventos.pdf', compact('evento'));
+        return $pdf->download("evento_{$evento->id}.pdf");
     }
 }

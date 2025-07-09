@@ -38,8 +38,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.destroy');
 });
 
+Route::middleware(['auth', 'role:admin,professor'])->group(function () {
+    Route::get('/eventos/{evento}/pdf', [EventoController::class, 'generatePdf'])->name('eventos.pdf');
+});
+
 Route::middleware(['auth', 'role:aluno,professor'])->group(function () {
     Route::get('/eventos', [EventoController::class, 'publicIndex'])->name('eventos.public');
+});
+
+Route::middleware(['auth', 'role:professor'])->group(function () {
+    Route::get('/eventos/{evento}', [EventoController::class, 'show'])->name('eventos.show');
 });
 
 require __DIR__.'/auth.php';

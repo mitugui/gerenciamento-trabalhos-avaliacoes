@@ -37,11 +37,17 @@
                                     </div>
                                     @auth
                                         @if (Auth::user()->isAluno())
-                                            <a class="bg-gray-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-gray-600 transition" href="#">Inscrever Trabalho</a>
+                                            <a class="bg-gray-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-gray-600 transition"
+                                            href="#">
+                                                Inscrever Trabalho
+                                            </a>
                                         @endif
 
                                         @if (Auth::user()->isProfessor())
-                                            <a class="bg-gray-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-gray-600 transition" href="#">Detalhes</a>
+                                            <a class="bg-gray-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-gray-600 transition" 
+                                            href="{{ route('eventos.show', $evento->id) }}">
+                                                Detalhes
+                                            </a>
                                         @endif
                                     @endauth
                                 </div>
