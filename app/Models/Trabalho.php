@@ -28,7 +28,7 @@ class Trabalho extends Model
 
     public function alunos()
     {
-        return $this->belongsToMany(Aluno::class, 'aluno_trabalho', 'trabalho_id', 'aluno_id');
+        return $this->belongsToMany(Aluno::class, 'aluno_trabalho', 'trabalho_id', 'aluno_id')->withTimestamps();
     }
 
     public function avaliacoes()

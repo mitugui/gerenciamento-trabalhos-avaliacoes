@@ -27,6 +27,6 @@ class Aluno extends Model
 
     public function trabalhos()
     {
-        return $this->belongsToMany(Trabalho::class, 'aluno_trabalho', 'aluno_id', 'trabalho_id');
+        return $this->belongsToMany(Trabalho::class, 'aluno_trabalho', 'aluno_id', 'trabalho_id')->withTimestamps();
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TrabalhoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,11 @@ Route::middleware(['auth', 'role:aluno,professor'])->group(function () {
 
 Route::middleware(['auth', 'role:professor'])->group(function () {
     Route::get('/eventos/{evento}', [EventoController::class, 'show'])->name('eventos.show');
+});
+
+Route::middleware(['auth', 'role:aluno'])->group(function () {
+    Route::get('/trabalhos/create/{evento_id}', [TrabalhoController::class, 'create'])->name('trabalhos.create');
+    Route::post('/trabalhos/store/{evento_id}', [TrabalhoController::class, 'store'])->name('trabalhos.store');
 });
 
 require __DIR__.'/auth.php';

@@ -143,13 +143,13 @@ class EventoController extends Controller
         $dados = $request->only(['nome', 'local', 'descricao']);
 
         if (isset($rules['data_inscricao'])) {
-            $dados['data_inscricao'] = $request->input('data_inscricao');
+            $dados['data_inscricao'] = $request->data_inscricao;
         }
         if (isset($rules['data_inicio'])) {
-            $dados['data_inicio'] = $request->input('data_inicio');
+            $dados['data_inicio'] = $request->data_inicio;
         }
         if (isset($rules['data_fim'])) {
-            $dados['data_fim'] = $request->input('data_fim');
+            $dados['data_fim'] = $request->data_fim;
         }
 
         $evento->update($dados);

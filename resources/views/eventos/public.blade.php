@@ -38,7 +38,7 @@
                                     @auth
                                         @if (Auth::user()->isAluno())
                                             <a class="bg-gray-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-gray-600 transition"
-                                            href="#">
+                                            href="{{ route('trabalhos.create', $evento->id) }}">
                                                 Inscrever Trabalho
                                             </a>
                                         @endif
