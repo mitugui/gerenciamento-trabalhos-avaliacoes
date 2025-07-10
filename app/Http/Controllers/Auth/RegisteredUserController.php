@@ -43,7 +43,6 @@ class RegisteredUserController extends Controller
             'siape' => ['required_if:role,professor', 'nullable', 'string', 'max:20', 'unique:professores,siape'],
         ]);
 
-        // Busca o ID da role (assumindo que o nome da role seja 'ALUNO' ou 'PROFESSOR' no banco)
         $role = Role::where('nome', strtoupper($request->role))->firstOrFail();
 
         $user = User::create([
@@ -53,7 +52,6 @@ class RegisteredUserController extends Controller
             'role_id' => $role->id,
         ]);
 
-        // Criar aluno ou professor dependendo da role
         if ($request->role === 'aluno') {
             Aluno::create([
                 'user_id' => $user->id,

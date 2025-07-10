@@ -34,9 +34,9 @@ class AuthenticatedSessionController extends Controller
         if (strtolower($user->role->nome) === 'admin') {
             return redirect()->route('eventos.index');
         } elseif (strtolower($user->role->nome) === 'aluno') {
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         } elseif (strtolower($user->role->nome) === 'professor') {
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         }
 
         return redirect()->route('/login');
