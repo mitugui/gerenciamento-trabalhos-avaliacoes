@@ -41,6 +41,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:admin,professor'])->group(function () {
     Route::get('/eventos/{evento}/pdf', [EventoController::class, 'generatePdf'])->name('eventos.pdf');
+    Route::get('/trabalhos/avaliacao', [TrabalhoController::class, 'evaluation'])->name('trabalhos.evaluation');
 });
 
 Route::middleware(['auth', 'role:aluno,professor'])->group(function () {

@@ -18,6 +18,13 @@ class TrabalhoController extends Controller
         return view('trabalhos.index', compact('trabalhos'));
     }
 
+    public function evaluation()
+    {
+        $trabalhos_pendentes = Trabalho::where('status', 'pendente')->get();
+        
+        return view('trabalhos.evaluation', compact('trabalhos_pendentes'));
+    }
+
     public function create(string $evento_id)
     {
         return view('trabalhos.create', compact('evento_id'));
