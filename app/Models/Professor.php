@@ -17,7 +17,8 @@ class Professor extends Model
 
     protected $fillable = [
         'user_id',
-        'siape'
+        'siape',
+        'pode_avaliar'
     ];
 
     public function user()
@@ -28,5 +29,10 @@ class Professor extends Model
     public function avaliacoes()
     {
         return $this->hasMany(Avaliacao::class);
+    }
+
+    public function podeAvaliar()
+    {
+        return $this->pode_avaliar;
     }
 }

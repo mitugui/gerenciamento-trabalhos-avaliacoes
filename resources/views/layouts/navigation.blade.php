@@ -16,7 +16,7 @@
                                 {{ __('Eventos') }}
                             </x-nav-link>
                         @endif
-                        @if (Auth::user()->isProfessor())
+                        @if (Auth::user()->isProfessor() && Auth::user()->professor->pode_avaliar)
                             <x-nav-link :href="route('trabalhos.evaluation')" :active="request()->routeIs('trabalhos.evaluation')">
                                 {{ __('Avaliar') }}
                             </x-nav-link>
