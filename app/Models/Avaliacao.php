@@ -15,8 +15,7 @@ class Avaliacao extends Model
     protected $fillable = [
         'trabalho_id',
         'professor_id',
-        'status',
-        'comentario',
+        'descricao',
         'nota',
     ];
 

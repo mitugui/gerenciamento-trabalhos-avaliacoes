@@ -12,8 +12,7 @@ class AvaliacaoSeeder extends Seeder
         Avaliacao::create([
             'trabalho_id' => 1,
             'professor_id' => 2,
-            'status' => 'aprovado',
-            'comentario' => 'Excelente trabalho, bem estruturado e com bom conteúdo.',
+            'descricao' => 'Excelente trabalho, bem estruturado e com bom conteúdo.',
             'nota' => 9.5,
         ]);
     }
