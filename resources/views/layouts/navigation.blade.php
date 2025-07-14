@@ -16,6 +16,11 @@
                                 {{ __('Eventos') }}
                             </x-nav-link>
                         @endif
+                        @if (Auth::user()->isAluno())
+                            <x-nav-link :href="route('trabalhos.index')" :active="request()->routeIs('trabalhos.index')">
+                                {{ __('Trabalhos') }}
+                            </x-nav-link>
+                        @endif
                     @endauth  
                 </div>
             </div>

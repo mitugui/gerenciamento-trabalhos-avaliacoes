@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class TrabalhoController extends Controller
 {
+    public function index()
+    {
+        $trabalhos = Trabalho::whereHas('alunos', function ($query) {
+            $query->where('aluno_id', Auth::user()->id);
+        })->get();
+
+        return view('trabalhos.index', compact('trabalhos'));
+    }
+
     public function create(string $evento_id)
     {
         return view('trabalhos.create', compact('evento_id'));
@@ -46,5 +55,12 @@ class TrabalhoController extends Controller
 
         return redirect()->route('eventos.public')
             ->with('success', 'Trabalho cadastrado com sucesso!');
+    }
+
+    public function show(string $id)
+    {
+        $trabalho = Trabalho::findOrFail($id);
+
+        return view('trabalhos.show', compact('trabalho'));
     }
 }

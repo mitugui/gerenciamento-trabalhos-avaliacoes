@@ -45,15 +45,14 @@ Route::middleware(['auth', 'role:admin,professor'])->group(function () {
 
 Route::middleware(['auth', 'role:aluno,professor'])->group(function () {
     Route::get('/eventos', [EventoController::class, 'publicIndex'])->name('eventos.public');
-});
-
-Route::middleware(['auth', 'role:professor'])->group(function () {
-    Route::get('/eventos/{evento}', [EventoController::class, 'show'])->name('eventos.show');
+    Route::get('/eventos/{evento_id}', [EventoController::class, 'show'])->name('eventos.show');
 });
 
 Route::middleware(['auth', 'role:aluno'])->group(function () {
     Route::get('/trabalhos/create/{evento_id}', [TrabalhoController::class, 'create'])->name('trabalhos.create');
     Route::post('/trabalhos/store/{evento_id}', [TrabalhoController::class, 'store'])->name('trabalhos.store');
+    Route::get('/trabalhos', [TrabalhoController::class, 'index'])->name('trabalhos.index');
+    Route::get('/trabalhos/{id}', [TrabalhoController::class, 'show'])->name('trabalhos.show');
 });
 
 require __DIR__.'/auth.php';
