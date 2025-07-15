@@ -48,20 +48,17 @@
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col items-end justify-between">
-                                    @if ($trabalho->status === 'pendente')
-                                        <div class="bg-green-100 text-yellow-800 font-semibold px-3 py-1 rounded-full shadow-sm">
-                                            {{ $trabalho->status }}
-                                        </div>
-                                    @elseif ($trabalho->status === 'aprovado')
-                                        <div class="bg-blue-100 text-blue-800 font-semibold px-3 py-1 rounded-full shadow-sm">
-                                            {{ $trabalho->status }}
-                                        </div>
-                                    @elseif ($trabalho->status === 'rejeitado')
-                                        <div class="bg-red-100 text-red-800 font-semibold px-3 py-1 rounded-full shadow-sm">
-                                            {{ $trabalho->status }}
-                                        </div>
-                                    @endif
+                                <div class="flex flex-col items-end justify-between">                                    
+                                    <div class="font-semibold px-3 py-1 rounded-full shadow-sm
+                                        @if ($trabalho->status === 'pendente')
+                                            bg-green-100 text-yellow-800
+                                        @elseif ($trabalho->status === 'aprovado')
+                                            bg-blue-100 text-blue-800
+                                        @elseif ($trabalho->status === 'rejeitado')
+                                            bg-red-100 text-red-800
+                                        @endif">
+                                        {{ $trabalho->status }}
+                                    </div>
 
                                     <a class="bg-gray-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-gray-600 transition" 
                                         href="{{ route('trabalhos.show', $trabalho->id) }}">
