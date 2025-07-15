@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AvaliacaoController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrabalhoController;
+use App\Models\Avaliacao;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +47,8 @@ Route::middleware(['auth', 'role:admin,professor'])->group(function () {
 
 Route::middleware(['auth', 'role:professor', 'can.evaluate'])->group(function () {
     Route::get('/trabalhos/avaliacao', [TrabalhoController::class, 'evaluation'])->name('trabalhos.evaluation');
+    Route::get('/avaliacoes/avaliar/{trabalho_id}', [AvaliacaoController::class, 'evaluate'])->name('avaliacoes.evaluate');
+    Route::post('/avaliacoes/store/{trabalho_id}', [AvaliacaoController::class, 'storeEvaluation'])->name('avaliacoes.store');    
 });
 
 Route::middleware(['auth', 'role:aluno,professor'])->group(function () {

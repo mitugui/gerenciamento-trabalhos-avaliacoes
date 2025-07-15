@@ -64,7 +64,7 @@
                                     @endif
 
                                     <a class="bg-gray-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-gray-600 transition" 
-                                        href="#">
+                                        href="{{ route('avaliacoes.evaluate', $trabalho->id) }}">
                                         Avaliar
                                     </a>
                                 </div>
