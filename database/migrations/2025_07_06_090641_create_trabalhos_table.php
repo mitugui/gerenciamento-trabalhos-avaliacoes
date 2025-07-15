@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('evento_id')->constrained('eventos')->onDelete('cascade');
             $table->enum('status', ['pendente', 'aprovado', 'rejeitado'])->default('pendente');
             $table->string('titulo');
-            $table->string('descricao');
+            $table->string('descricao')->nullable();
             $table->text('resumo');
             $table->dateTime('data_submissao');
             $table->softDeletes();
