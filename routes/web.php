@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AvaliacaoController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrabalhoController;
 use App\Models\Avaliacao;
@@ -39,6 +40,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/eventos/{evento}/edit', [EventoController::class, 'edit'])->name('eventos.edit');
     Route::put('/admin/eventos/{evento}', [EventoController::class, 'update'])->name('eventos.update');
     Route::delete('/admin/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.destroy');
+
+    Route::get('/admin/professores', [ProfessorController::class, 'adminIndex'])->name('admin.professores.index');
+    Route::patch('/admin/professores/{professor}', [ProfessorController::class, 'patch'])->name('admin.professores.patch');
 });
 
 Route::middleware(['auth', 'role:admin,professor'])->group(function () {

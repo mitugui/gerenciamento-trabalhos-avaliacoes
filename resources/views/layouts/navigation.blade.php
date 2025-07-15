@@ -26,6 +26,14 @@
                                 {{ __('Trabalhos') }}
                             </x-nav-link>
                         @endif
+                        @if (Auth::user()->isAdmin())
+                            <x-nav-link :href="route('eventos.index')" :active="request()->routeIs('eventos.index')">
+                                {{ __('Eventos') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('admin.professores.index')" :active="request()->routeIs('admin.professores.index')">
+                                {{ __('Professores') }}
+                            </x-nav-link>
+                        @endif
                     @endauth  
                 </div>
             </div>
