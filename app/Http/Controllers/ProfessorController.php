@@ -9,7 +9,7 @@ class ProfessorController extends Controller
     public function adminIndex()
     {
         $professores = Professor::all();
-        return view('professores.admin_index', compact('professores'));
+        return view('professores.admin.index', compact('professores'));
     }
 
     public function patch(Professor $professor)

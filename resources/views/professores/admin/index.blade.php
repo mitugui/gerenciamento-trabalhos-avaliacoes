@@ -51,7 +51,7 @@
                                         <td class="px-4 py-2 flex justify-end gap-2">
                                             @if (!$professor->pode_avaliar)
                                                 <div x-data="{ open: false }" class="relative">
-                                                    <button @click="open = true" class="text-blue-600 hover:underline text-sm">
+                                                    <button @click="open = true" class="bg-gray-200 rounded w-20 p-1 text-blue-600 hover:underline text-sm">
                                                         Pode
                                                     </button>
 
@@ -92,7 +92,7 @@
 
                                             @else
                                                 <div x-data="{ open: false }" class="relative">
-                                                    <button @click="open = true" class="text-red-600 hover:underline text-sm">
+                                                    <button @click="open = true" class="bg-red-200 rounded w-20 p-2 text-red-600 hover:underline text-sm">
                                                         Não Pode
                                                     </button>
 
