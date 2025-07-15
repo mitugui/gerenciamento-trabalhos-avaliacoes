@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TrabalhoAvaliado;
 use App\Models\Avaliacao;
 use App\Models\Trabalho;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AvaliacaoController extends Controller
 {
@@ -41,8 +43,17 @@ class AvaliacaoController extends Controller
 
         $avaliacao->trabalho->update([
             'status' => $request->status,
-        ]);        
+        ]);
+
+        $this->evaluationConcludedMailSend($avaliacao->trabalho);
 
         return redirect()->route('trabalhos.evaluation')->with('success', 'Avaliação realizada com sucesso!');
+    }
+
+    private function evaluationConcludedMailSend($trabalho)
+    {
+        foreach ($trabalho->alunos as $aluno) {
+            Mail::to($aluno->user->email)->send(new TrabalhoAvaliado($trabalho, $trabalho->avaliacoes));
+        }
     }
 }
