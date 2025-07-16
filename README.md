@@ -1,66 +1,120 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SGTA - Sistema de Gerenciamento de Trabalhos e Avaliações
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web para gerenciar trabalhos acadêmicos submetidos a eventos, permitindo que **alunos** inscrevam seus trabalhos e que **professores** possam avaliá-los. Após a avaliação, é possível gerar relatórios com os trabalhos e é realizado o envio de um email para notificação ao aluno. Além disso, **administradores** têm controle sobre os eventos e sobre as permissões de avaliação dos professores.
 
-## About Laravel
+Este projeto foi desenvolvido como parte do Trabalho Final do segundo semestre da disciplina **Desenvolvimento Web II** do curso de Tecnólogo em Análise e Desenvolvimento de Sistemas — TADS — no Instituto Federal do Paraná — IFPR — Campus Paranaguá.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Funcionalidades
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Cadastro e login de usuários (alunos e professores).
+- Submissão de trabalhos pelos alunos.
+- Avaliação de trabalhos pelos professores.
+- Notificação por e-mail sobre o status da avaliação.
+- Visualização de eventos, trabalhos e relatórios.
+- Gerenciamento de eventos pelos administradores.
 
-## Learning Laravel
+## Casos de Uso
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Casos de Uso](/docs/diagrama-casos-de-uso.png)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Modelo Entidade-Relacionamento (ER)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![Modelo Entidade Relacionamento](/docs/diagrama-entidade-relacionamento.png)
 
-## Laravel Sponsors
+## Tecnologias Utilizadas
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Laravel 10**
+- **PHP 8.1+**
+- **Laravel Breeze**
+- **Blade**
+- **DOMPDF** (geração de relatórios em PDF)
+- **Mailtrap** (para envio de emails em ambiente de desenvolvimento)
+- **MySQL 8.0 (via Docker)**
 
-### Premium Partners
+## Execução do Projeto (Ambiente Local)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Pré-requisitos
 
-## Contributing
+- PHP 8.1+
+- Composer
+- Node.js e npm
+- Docker + Docker Compose
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Passos para execução
 
-## Code of Conduct
+1. Clone o repositório:
+```bash
+git clone https://github.com/mitugui/gerenciamento-trabalhos-avaliacoes.git
+cd gerenciamento-trabalhos-avaliacoes
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. Copie o `.env`:
+```bash
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+3. Edite o `.env` com suas credenciais de banco:
+```env
+DB_DATABASE=sgta
+DB_USERNAME=root
+DB_PASSWORD=suasenha
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4.  Configure o Mailtrap para Teste de E-mails:
 
-## License
+    Este projeto utiliza o **Mailtrap** para simular o envio de e-mails em ambiente de desenvolvimento, permitindo que você visualize e valide mensagens sem enviá-las para destinatários reais.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    Para configurá-lo, siga os passos abaixo:
+
+    4.1. Crie uma conta gratuita em [mailtrap.io](https://mailtrap.io).
+    
+    4.2. No painel do Mailtrap, crie uma nova **"inbox"**.
+    
+    4.3. Na aba **"Integrations"**, selecione **"Laravel"** e copie as credenciais **SMTP**.
+    
+    4.4. Cole as informações da sua conta no arquivo `.env` do projeto, substituindo os valores `seu_user_mailtrap` e `sua_senha_mailtrap` pelas suas credenciais:
+
+    ```env
+    MAIL_MAILER=smtp
+    MAIL_HOST=smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=seu_user_mailtrap
+    MAIL_PASSWORD=sua_senha_mailtrap
+    MAIL_ENCRYPTION=null
+    MAIL_FROM_ADDRESS="no-reply@sgta.com"
+    MAIL_FROM_NAME="${APP_NAME}"
+    ```
+
+5. Suba o container MySQL:
+```bash
+docker-compose up -d
+```
+
+6. Instale as dependências:
+```bash
+composer install
+npm install
+```
+
+7. Gere a chave da aplicação:
+```bash
+php artisan key:generate
+```
+
+8. Rode as migrations e seeders:
+```bash
+php artisan migrate --seed
+```
+
+9. Inicie o servidor de desenvolvimento:
+```bash
+npm run dev
+php artisan serve
+```
+
+10. Acesse o sistema em: [http://localhost:8080](http://localhost:8080)
+
+## Contato
+
+Caso queira contribuir ou reportar algum bug, fique à vontade para abrir uma issue ou pull request.
